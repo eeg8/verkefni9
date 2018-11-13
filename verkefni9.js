@@ -113,7 +113,7 @@ const program = (() => {
     function timi(x) {
         var st = new Date(x);
         d = st.getDate();
-        if(d<9) {
+        if(d<10) {
             d='0'+d;
         }
         m = (st.getMonth()+1);
