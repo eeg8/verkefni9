@@ -111,17 +111,20 @@ const program = (() => {
     }
     
     function timi(x) {
-        var st = new Date(x);
-        d = st.getDate();
-        if(d<10) {
-            d='0'+d;
+        var klukka = new Date(x);
+        day = klukka.getDate();
+        manudur = (klukka.getMonth()+1);
+
+        if(day<10) {
+            day = '0' + day;
         }
-        m = (st.getMonth()+1);
-        if(m<9) {
-            m='0'+m;
+
+        if(manudur<10) {
+            manudur = '0' + manudur;
         }
-        y =st.getFullYear();
-        return (y +'-'+m +'-'+ d);
+
+        ar = klukka.getFullYear();
+        return (ar +'-'+manudur +'-'+ day);
     }
 
       function loadingMynd(){
