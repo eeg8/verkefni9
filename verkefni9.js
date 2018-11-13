@@ -101,32 +101,30 @@ const program = (() => {
         if (ddGildi.innerText === "") { console.log('yo'); return;}
         else {return e.appendChild(dlGildi); }
     }
+
     function displayError(error) {
         const container = domains.querySelector('.results');
-    
         while (container.firstChild) {
-          container.removeChild(container.firstChild);
+            container.removeChild(container.firstChild);
         }
-    
         container.appendChild(document.createTextNode(error));
-      }
+    }
     
-      function timi(x) {
-    var st = new Date(x);
-    d = st.getDate();
-    if(d<9)
-    {
-      d='0'+d;
+    function timi(x) {
+        var st = new Date(x);
+        d = st.getDate();
+        if(d<9) {
+            d='0'+d;
+        }
+        m = (st.getMonth()+1);
+        if(m<9) {
+            m='0'+m;
+        }
+        y =st.getFullYear();
+        return (y +'-'+m +'-'+ d);
     }
-    m = (st.getMonth()+1);
-    if(m<9)
-    {
-      m='0'+m;
-    }
-    y =st.getFullYear();
-    return (y +'-'+m +'-'+ d);
-  }
-      function loadingBar(){
+
+      function loadingMynd(){
         const setjaInn = document.createElement('div');
         const mynd = document.createElement('img');
         const texti = document. createElement('p');
@@ -145,7 +143,7 @@ const program = (() => {
     function fetchData(number) {
         fetch(`${API_URL}${number}`)
           .then( 
-            loadingBar()
+            loadingMynd()
           )
           .then((response) => {
             return response.json();
