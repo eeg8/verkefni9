@@ -56,9 +56,9 @@ const program = (() => {
         countryElement.appendChild(document.createTextNode('Land'));
 
         domainValueElement.appendChild(document.createTextNode(domain));
-        registeredValueElement.appendChild(document.createTextNode(registered));
-        lastChangeValueElement.appendChild(document.createTextNode(lastChange));
-        expiresValueElement.appendChild(document.createTextNode(expires));
+        registeredValueElement.appendChild(document.createTextNode(timi(registered)));
+        lastChangeValueElement.appendChild(document.createTextNode(timi(lastChange)));
+        expiresValueElement.appendChild(document.createTextNode(timi(expires)));
         registrantnameValueElement.appendChild(document.createTextNode(registrantname));
         emailValueElement.appendChild(document.createTextNode(email));
         addressValueElement.appendChild(document.createTextNode(address));
@@ -110,6 +110,22 @@ const program = (() => {
     
         container.appendChild(document.createTextNode(error));
       }
+    
+      function timi(x) {
+    var st = new Date(x);
+    d = st.getDate();
+    if(d<9)
+    {
+      d='0'+d;
+    }
+    m = (st.getMonth()+1);
+    if(m<9)
+    {
+      m='0'+m;
+    }
+    y =st.getFullYear();
+    return (y +'-'+m +'-'+ d);
+  }
       function loadingBar(){
         const setjaInn = document.createElement('div');
         const mynd = document.createElement('img');
@@ -132,13 +148,12 @@ const program = (() => {
             loadingBar()
           )
           .then((response) => {
-              return response.json();
+            return response.json();
           })
           .then((data) => {
-            
             const container = domains.querySelector('.results');
             container.removeChild(container.firstChild);
-               displayDomain(data.results);
+            displayDomain(data.results);
           })
           .catch((error) => {
             displayError('Lén er ekki skráð');
